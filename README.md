@@ -117,7 +117,7 @@ PROJECT_FOLDER$ pip install -r requirements.txt
 
 ### 1. Start ngrok.
 
-Open a new terminal and run
+Open a new terminal and run the command below:
 
 ```bash
 $ ngrok http 5000
