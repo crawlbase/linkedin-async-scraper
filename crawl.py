@@ -9,10 +9,10 @@ from lib.database import create_database_session
 
 crawlbase_settings = load_settings()
 
-crawlbase_js_token = crawlbase_settings.get('token')
+crawlbase_token = crawlbase_settings.get('token')
 crawlbase_crawler  = crawlbase_settings.get('crawler')
 
-if crawlbase_js_token is None or crawlbase_js_token.strip() == '':
+if crawlbase_token is None or crawlbase_token.strip() == '':
   print('--------------------------------------------------')
   print('Please set your Crawlbase token in the settings.yml')
   print('--------------------------------------------------')
@@ -41,7 +41,7 @@ session = create_database_session()
 for url in linked_in_profile_urls:
   url = url.strip()
   encoded_url = urllib.parse.quote(url, safe='')
-  api_url = crawlbase_api_url.format(crawlbase_js_token, crawlbase_crawler, encoded_url)
+  api_url = crawlbase_api_url.format(crawlbase_token, crawlbase_crawler, encoded_url)
 
   log(f'Requesting to crawl {url}')
 
