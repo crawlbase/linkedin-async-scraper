@@ -11,9 +11,8 @@ from lib.database import create_database_session
 SCHEDULE_INTERVAL_IN_SECONDS = 60
 RECORDS_COUNT_LIMIT_PER_PROCESSING = 10
 
-session = create_database_session()
-
 def process():
+  session = create_database_session()
   received_crawl_requests = session.query(CrawlRequest).filter_by(status='received').limit(RECORDS_COUNT_LIMIT_PER_PROCESSING).all()
 
   if len(received_crawl_requests) == 0:
@@ -31,7 +30,7 @@ def process():
       summary = '\n'.join(summaries) if is_iterable(summaries) else None
 
       linkedin_profile = LinkedinProfile(title=title, headline=headline, summary=summary)
-      linkedin_profile.crawl_request = crawl_request
+      linkedin_profile.crawl_request_id = crawl_request.id
       session.add(linkedin_profile)
 
       experiences = (data.get('experience') and data.get('experience').get('experienceList')) or []
@@ -42,16 +41,16 @@ def process():
         description = '\n'.join(descriptions) if is_iterable(descriptions) else None
         is_current = experience.get('currentPosition') == True
 
-      linkedin_profile_experience = LinkedinProfileExperience(
-          title=title,
-          company_name=company_name,
-          description=description,
-          is_current=is_current
-        )
-      linkedin_profile_experience.linkedin_profile = linkedin_profile
-      session.add(linkedin_profile_experience)
+        linkedin_profile_experience = LinkedinProfileExperience(
+            title=title,
+            company_name=company_name,
+            description=description,
+            is_current=is_current
+          )
+        linkedin_profile_experience.linkedin_profile = linkedin_profile
+        session.add(linkedin_profile_experience)
 
-    crawl_request.status = 'processed'
+      crawl_request.status = 'processed'
 
     session.commit()
 

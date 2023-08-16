@@ -24,11 +24,11 @@ if crawlbase_crawler is None or crawlbase_crawler.strip() == '':
   print('-----------------------------------------------------')
   exit()
 
-linked_in_profile_urls = open('linkedin_profile_urls.txt', 'r').readlines()
+linked_in_profile_urls = open('urls.txt', 'r').readlines()
 
 if len(linked_in_profile_urls) == 0:
   print('-----------------------------------------------------------------------------------------------------')
-  print('There are no urls available. Please populate urls to linkedin_profile_urls.txt separated by new line.')
+  print('There are no urls available. Please populate urls to `urls.txt` separated by new line.')
   print('-----------------------------------------------------------------------------------------------------')
   exit()
 
