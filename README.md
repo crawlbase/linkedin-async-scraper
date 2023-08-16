@@ -93,27 +93,27 @@ By default it is configured with 5 top [most followed people in LinkedIn](https:
 
 ## Setup Python Virtual Environment
 
-  1. Create a virtual environment in our project folder
+### 1. Create a virtual environment in our project folder
 
 ```bash
 PROJECT_FOLDER$ python3 -m venv .venv
 ```
 
-  2. Activate the virtual environment
+### 2. Activate the virtual environment
 
 
 ```bash
 PROJECT_FOLDER$ . .venv/bin/activate
 ```
 
-  2. Install dependencies
+### 3. Install dependencies
 
 
 ```bash
 PROJECT_FOLDER$ pip install -r requirements.txt
 ```
 
-## I. Run the Crawler Callback Server
+## I. Running the Crawler Callback Server
 
 ### 1. Start ngrok.
 
@@ -133,7 +133,7 @@ What we need is the `https://4e15-180-190-160-114.ngrok-free.app` value and we w
 
 ### 2. Then run the callback server script.
 
-Open a new terminal and run to activate the python virtual environment for this terminal
+Open a new terminal and run the command below to activate the python virtual environment for this terminal
 
 ```bash
 PROJECT_FOLDER$ . .venv/bin/activate
@@ -166,9 +166,9 @@ Example:
 https://4e15-180-190-160-114.ngrok-free.app/crawlbase_crawler_callback
 ```
 
-## II. Run the Processor
+## II. Runing the Periodic Processor
 
-Open a new terminal and run to activate the python virtual environment for this terminal
+Open a new terminal and run the command below to activate the python virtual environment for this terminal
 
 ```bash
 PROJECT_FOLDER$ . .venv/bin/activate
@@ -180,11 +180,11 @@ Then run the processor
 PROJECT_FOLDER$ python process.py
 ```
 
-This will keep on looping waiting for a data to be processed coming from Crawlbase.
+This will keep on looping and waiting for a data to be processed coming from Crawlbase.
 
-## II. Initiate Crawling
+## III. Initiating Crawling
 
-Open a new terminal and run to activate the python virtual environment for this terminal
+Open a new terminal and run the command below to activate the python virtual environment for this terminal
 
 ```bash
 PROJECT_FOLDER$ . .venv/bin/activate
