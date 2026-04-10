@@ -195,3 +195,7 @@ Then run the crawl script.
 ```bash
 PROJECT_FOLDER$ python crawl.py
 ```
+
+---
+
+Copyright 2026 Crawlbase
